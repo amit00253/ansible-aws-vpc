@@ -1,11 +1,12 @@
 - hosts: localhost
   connection: local
+  gather_facts: False
   tasks:
     - name: Import VPC Variables
       include_ vars: vars/vpc_setup
 
     - name: Create vprofile VPC
-      ec2_vpv_net: 
+      ec2_vpc_net: 
         name: "{{vpc_name}}"
         cidr_block: "{{vpcCidr}}"
         region: "{{region}}"
