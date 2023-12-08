@@ -33,7 +33,7 @@
         - package
 
     - apt_repository:
-        repo: deb https://dl.bintray.com/rabbitmq/debian {{ ansible_distribution_release|lower }} main
+        repo: deb https://ppa1.novemberain.com/rabbitmq/rabbitmq-server/deb/ubuntu jammy main
         state: present
       tags:
         - package
