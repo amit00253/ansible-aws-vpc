@@ -1,0 +1,55 @@
+2023-12-08 07:13:07,231 p=1677 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact & sql file to files directory] ********************************************************************************************************************************************
+2023-12-08 07:13:07,255 p=1677 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-12-08 07:13:09,816 p=1677 u=ubuntu n=ansible | ok: [localhost]
+2023-12-08 07:13:09,846 p=1677 u=ubuntu n=ansible | TASK [Install  jdk, maven, git] **********************************************************************************************************************************************************************************
+2023-12-08 07:13:20,263 p=1677 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2023-12-08 07:13:24,357 p=1677 u=ubuntu n=ansible | failed: [localhost] (item=openjdk-8-jdk) => {"ansible_loop_var": "item", "cache_update_time": 1702019602, "cache_updated": true, "changed": false, "item": "openjdk-8-jdk", "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'openjdk-8-jdk=8u392-ga-1~20.04'' failed: E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 1665 (unattended-upgr)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "rc": 100, "stderr": "E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 1665 (unattended-upgr)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "stderr_lines": ["E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 1665 (unattended-upgr)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"], "stdout": "", "stdout_lines": []}
+2023-12-08 07:13:28,895 p=1677 u=ubuntu n=ansible | failed: [localhost] (item=maven) => {"ansible_loop_var": "item", "cache_update_time": 1702019606, "cache_updated": true, "changed": false, "item": "maven", "msg": "'/usr/bin/apt-get -y -o \"Dpkg::Options::=--force-confdef\" -o \"Dpkg::Options::=--force-confold\"       install 'maven=3.6.3-1'' failed: E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 1665 (unattended-upgr)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "rc": 100, "stderr": "E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 1665 (unattended-upgr)\nE: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?\n", "stderr_lines": ["E: Could not get lock /var/lib/dpkg/lock-frontend. It is held by process 1665 (unattended-upgr)", "E: Unable to acquire the dpkg frontend lock (/var/lib/dpkg/lock-frontend), is another process using it?"], "stdout": "", "stdout_lines": []}
+2023-12-08 07:13:28,909 p=1677 u=ubuntu n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-12-08 07:13:28,909 p=1677 u=ubuntu n=ansible | localhost                  : ok=1    changed=0    unreachable=0    failed=1    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:22:21,693 p=17975 u=ubuntu n=ansible | PLAY [Generate artifact, copy artifact & sql file to files directory] ********************************************************************************************************************************************
+2023-12-08 07:22:21,712 p=17975 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-12-08 07:22:23,111 p=17975 u=ubuntu n=ansible | ok: [localhost]
+2023-12-08 07:22:23,127 p=17975 u=ubuntu n=ansible | TASK [Install  jdk, maven, git] **********************************************************************************************************************************************************************************
+2023-12-08 07:22:26,034 p=17975 u=ubuntu n=ansible | ok: [localhost] => (item=git)
+2023-12-08 07:23:06,885 p=17975 u=ubuntu n=ansible | changed: [localhost] => (item=openjdk-8-jdk)
+2023-12-08 07:23:18,111 p=17975 u=ubuntu n=ansible | changed: [localhost] => (item=maven)
+2023-12-08 07:23:18,126 p=17975 u=ubuntu n=ansible | TASK [Clone source code from github] *****************************************************************************************************************************************************************************
+2023-12-08 07:23:23,531 p=17975 u=ubuntu n=ansible | changed: [localhost]
+2023-12-08 07:23:23,545 p=17975 u=ubuntu n=ansible | TASK [mvn install command to build artifact] *********************************************************************************************************************************************************************
+2023-12-08 07:24:09,660 p=17975 u=ubuntu n=ansible | changed: [localhost]
+2023-12-08 07:24:09,685 p=17975 u=ubuntu n=ansible | TASK [Copy artifacts to files directory] *************************************************************************************************************************************************************************
+2023-12-08 07:24:10,956 p=17975 u=ubuntu n=ansible | changed: [localhost] => (item=/home/ubuntu/ansible-aws-vpc/provision-stack/Vprofile-repo/target/vprofile-v2.war)
+2023-12-08 07:24:10,966 p=17975 u=ubuntu n=ansible | TASK [Copy SQL file to files directory] **************************************************************************************************************************************************************************
+2023-12-08 07:24:11,406 p=17975 u=ubuntu n=ansible | changed: [localhost]
+2023-12-08 07:24:11,421 p=17975 u=ubuntu n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-12-08 07:24:11,422 p=17975 u=ubuntu n=ansible | localhost                  : ok=6    changed=5    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:25:30,541 p=23189 u=ubuntu n=ansible | PLAY [Set host to ip mapping in /etc/hosts file of all the instances in the stack] *******************************************************************************************************************************
+2023-12-08 07:25:30,560 p=23189 u=ubuntu n=ansible | TASK [Gathering Facts] *******************************************************************************************************************************************************************************************
+2023-12-08 07:25:32,290 p=23189 u=ubuntu n=ansible | ok: [web01]
+2023-12-08 07:25:32,625 p=23189 u=ubuntu n=ansible | ok: [cntl]
+2023-12-08 07:25:33,861 p=23189 u=ubuntu n=ansible | ok: [rmq01]
+2023-12-08 07:25:34,510 p=23189 u=ubuntu n=ansible | ok: [mc01]
+2023-12-08 07:25:34,565 p=23189 u=ubuntu n=ansible | ok: [app01]
+2023-12-08 07:25:35,109 p=23189 u=ubuntu n=ansible | ok: [db01]
+2023-12-08 07:25:35,126 p=23189 u=ubuntu n=ansible | TASK [Import VPC setup Variable] *********************************************************************************************************************************************************************************
+2023-12-08 07:25:35,179 p=23189 u=ubuntu n=ansible | ok: [cntl]
+2023-12-08 07:25:35,203 p=23189 u=ubuntu n=ansible | ok: [web01]
+2023-12-08 07:25:35,224 p=23189 u=ubuntu n=ansible | ok: [app01]
+2023-12-08 07:25:35,248 p=23189 u=ubuntu n=ansible | ok: [rmq01]
+2023-12-08 07:25:35,249 p=23189 u=ubuntu n=ansible | ok: [mc01]
+2023-12-08 07:25:35,258 p=23189 u=ubuntu n=ansible | ok: [db01]
+2023-12-08 07:25:35,268 p=23189 u=ubuntu n=ansible | TASK [Update hosts file for all the hosts] ***********************************************************************************************************************************************************************
+2023-12-08 07:25:36,103 p=23189 u=ubuntu n=ansible | changed: [web01]
+2023-12-08 07:25:36,107 p=23189 u=ubuntu n=ansible | changed: [app01]
+2023-12-08 07:25:36,107 p=23189 u=ubuntu n=ansible | changed: [mc01]
+2023-12-08 07:25:36,107 p=23189 u=ubuntu n=ansible | changed: [rmq01]
+2023-12-08 07:25:36,160 p=23189 u=ubuntu n=ansible | changed: [cntl]
+2023-12-08 07:25:36,442 p=23189 u=ubuntu n=ansible | changed: [db01]
+2023-12-08 07:25:36,459 p=23189 u=ubuntu n=ansible | PLAY RECAP *******************************************************************************************************************************************************************************************************
+2023-12-08 07:25:36,460 p=23189 u=ubuntu n=ansible | app01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:25:36,460 p=23189 u=ubuntu n=ansible | cntl                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:25:36,460 p=23189 u=ubuntu n=ansible | db01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:25:36,460 p=23189 u=ubuntu n=ansible | mc01                       : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:25:36,461 p=23189 u=ubuntu n=ansible | rmq01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2023-12-08 07:25:36,461 p=23189 u=ubuntu n=ansible | web01                      : ok=3    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
